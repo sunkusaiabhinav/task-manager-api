@@ -8,6 +8,7 @@ app = FastAPI(title="Task Manager API")
 class TaskCreate(BaseModel):
     title: str
     description: str = ""
+    priority: str = "medium"
 
 
 class Task(TaskCreate):
@@ -37,6 +38,7 @@ def create_task(task: TaskCreate):
         id=next_id,
         title=task.title,
         description=task.description,
+        priority=task.priority,
     )
 
     tasks.append(new_task)
