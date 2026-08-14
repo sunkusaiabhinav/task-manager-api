@@ -2,7 +2,7 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 
 
-app = FastAPI(title="Task Manager MAIN VERSION")
+app = FastAPI(title="Task Manager API")
 
 
 class TaskCreate(BaseModel):
