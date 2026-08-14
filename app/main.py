@@ -62,3 +62,24 @@ def delete_task(task_id: int):
             return {"message": "Task deleted"}
 
     raise HTTPException(status_code=404, detail="Task not found")
+
+class TaskStatusUpdate(BaseModel):
+    status: str
+
+
+@app.put("/tasks/{task_id}/status")
+def update_task_status(task_id: int, status_data: TaskStatusUpdate):
+    allowed_statuses = {"pending", "in_progress", "completed"}
+
+    if status_data.status not in allowed_statuses:
+        raise HTTPException(
+            status_code=400,
+            detail="Invalid status",
+        )
+
+    for task in tasks:
+        if task.id == task_id:
+            task.status = status_data.status
+            return task
+
+    raise HTTPException(status_code=404, detail="Task not found")
