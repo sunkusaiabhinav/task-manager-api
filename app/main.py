@@ -85,3 +85,7 @@ def update_task_status(task_id: int, status_data: TaskStatusUpdate):
             return task
 
     raise HTTPException(status_code=404, detail="Task not found")
+
+@app.get("/version")
+def get_version():
+    return {"version": "1.0"}
