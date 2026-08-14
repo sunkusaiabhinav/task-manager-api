@@ -8,3 +8,7 @@ A FastAPI backend for managing tasks.
 - Get tasks
 - Delete tasks
 - Update task status
+
+## Development
+
+This project is built using FastAPI.
